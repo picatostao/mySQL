@@ -154,7 +154,7 @@ try{
 
   //////////////////////////////////////RETO2///////////////////////////////////////////////
 
-///////////////////////////////
+
 //OBTERER ID Y NOTAS DE ALUMNOS (ID ENTRE 1 Y 2O Y NOTA MAYOR DE 8 Y DEL AÑO PASADO)
 
         // let idYnotas="SELECT student_id, mark FROM reto1.marks WHERE (student_id BETWEEN 1 AND 20)OR (mark>8 AND YEAR(CURRENT_DATE)-1)";
@@ -186,8 +186,45 @@ try{
 
 
 
+
+
+   //////////////
+  /// DIA 3 ////
+ //////////////
+
+
+//RETO 1 SELECCIONAR NOMBRES DE ALUMNOS Y ASIGNATURAS
+
+        // let mediaUltimoAñoalum="SELECT first_name, last_name, title FROM students AS s INNER JOIN marks AS m ON (s.student_id = m.student_id) INNER JOIN subjects AS su ON(m.subject_id= su.subject_id)";
+        // let [result]=await connection.query(mediaUltimoAñoalum);
+        // console.log(result);
+        // await connection.end
+
+
+      //EN WORKBENCH: SELECT first_name, last_name, title FROM students AS s INNER JOIN marks AS m ON (s.student_id = m.student_id) INNER JOIN subjects AS su ON(m.subject_id= su.subject_id)
+ 
+ //RETO 2 SELECCIONAR PROFESORES Y ASIGNATURAS 
+
+      
+//       let profeasig=" SELECT first_name, last_name, title FROM teachers AS t INNER JOIN subject_teacher AS s ON ( t.teaher_id=s.teacher_id) INNER JOIN subjects AS su ON (s.subject_id= su.subject_id)";
+//       let [result]=await connection.query(profeasig);
+//       console.log(result);
+//       await connection.end
+
+
+//RETO 3 NÚMERO TOTAL DE ALUMNOS POR ASIGNATURA, NOMBRE DE ASIGNATURA Y NOMBRE Y APELLIDO DEL PRROFESOR
+
+
+
+//       let profeasig="SELECT subjects.title AS asignatura, teachers.first_name, teachers.last_name , COUNT(students.student_id) AS alumnos FROM students INNER JOIN grupos ON students.group_id = grupos.group_id INNER JOIN subject_teacher ON students.group_id = subject_teacher.group_id INNER JOIN subjects ON subject_teacher.subject_id = subjects.subject_id INNER JOIN teachers ON subject_teacher.teacher_id = teachers.teaher_id GROUP BY subjects.title, teachers.first_name, teachers.last_name ";
+//       let [result]=await connection.query(profeasig);
+//       console.log(result);
+//       await connection.end
+
+      // EN WORKBENCH:SELECT  subjects.title AS asignatura, teachers.first_name, teachers.last_name , COUNT(students.student_id) AS alumnos FROM students INNER JOIN grupos ON students.group_id = grupos.group_id INNER JOIN subject_teacher ON students.group_id = subject_teacher.group_id INNER JOIN subjects ON subject_teacher.subject_id = subjects.subject_id INNER JOIN teachers ON subject_teacher.teacher_id = teachers.teaher_id GROUP BY subjects.title, teachers.first_name, teachers.last_name
+       
     }
-    
+
 
     catch(err){
         console.log(err);
@@ -196,3 +233,6 @@ try{
 }
 main();
 
+
+
+// SELECT first_name, last_name, title FROM teachers AS t INNER JOIN subject_teacher AS s ON ( s.teacher_id=t.teacher_id) INNER JOIN subjects AS su ON (s.subject_id= su.subject_id)
